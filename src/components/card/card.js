@@ -11,18 +11,24 @@ const CardEl = styled.article`
   border-radius: 8px;
   padding: 22px 20px;
   color: #000;
+  box-shadow: ${props => props.isShadowed ? '5px 5px 15px rgba(0, 0, 0, 0.25)' : null};
   p {
     align-self: flex-end;
     font-weight: 700;
   }
+  .country {
+    font-weight: 400;
+    text-transform: capitalize;
+  }
 `;
 
 const Card = (props) => {
-    const {title, img, price} = props.data;
+    const {title, img, price, country} = props.data;
     return(
-        <CardEl>
+        <CardEl isShadowed={props.isDetailed}>
             <img src={img} alt={title}/>
             <h4>{title}</h4>
+            {props.isDetailed ? <p className="country">{country}</p> : null}
             <p>{price}$</p>
         </CardEl>
     );

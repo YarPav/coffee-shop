@@ -4,6 +4,7 @@ const PageContainerEl = styled.main`
   max-width: 802px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 70px;
 `;
 
 const PageContainer = (props) => {

@@ -6,7 +6,7 @@ const PictureTextEl = styled.section`
   display: flex;
   color: #000;
   column-gap: 80px;
-  padding: 70px 0 60px 72px;
+  padding-left: 72px;
   .text {
     display: flex;
     flex-direction: column;

@@ -7,18 +7,17 @@ const CardsListEl = styled.ul`
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px 71px;
-  padding-top: 40px;
   margin: 0 auto;
 `;
 
-const CardList = (props) => {
+const CardsList = (props) => {
     return (
         <CardsListEl>
             {props.data.map(item =>
-                <Card key={item.id} data={item}/>
+                <Card key={item.id} data={item} isDetailed={props.isDetailed}/>
             )}
         </CardsListEl>
     );
 }
 
-export default CardList;
+export default CardsList;

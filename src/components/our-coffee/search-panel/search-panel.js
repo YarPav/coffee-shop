@@ -4,13 +4,19 @@ import Filter from "./filter/filter";
 
 const SearchPanelEl = styled.section`
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
 `;
 
 const SearchPanel = (props) => {
     return (
         <SearchPanelEl>
-            <Search/>
-            <Filter/>
+            <Search onUpdateSearch={props.onUpdateSearch}/>
+            <Filter
+                onUpdateFilter={props.onUpdateFilter}
+                currentFilter={props.currentFilter}
+                filters={props.filters}
+            />
         </SearchPanelEl>
     );
 }

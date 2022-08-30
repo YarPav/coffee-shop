@@ -93,7 +93,7 @@ class App extends Component {
         if (searchString.length === 0) {
             return items;
         }
-        return items.filter(item => item.name.toLowerCase().indexOf(searchString.toLowerCase()) > -1);
+        return items.filter(item => item.title.toLowerCase().indexOf(searchString.toLowerCase()) > -1);
     }
     filterEmp = (items, currentFilter) => {
         if (currentFilter === 'all') return items;
@@ -111,15 +111,23 @@ class App extends Component {
         const filteredData = this.filterEmp(data.productsData, currentFilter),
             visibleData = this.searchEmp(filteredData, searchString);
         return (
-            // <CoffeeHouse
-            //     headerData={this.state.data.headerData}
-            //     bestSellersData={this.getBestSellers
-            //     (this.state.data.productsData, this.state.data.bestSellersData)}
-            // />
-            <OurCoffee productData={visibleData}
-                       headerData={this.state.data.headerData}
-                       aboutOutCoffee={this.state.data.ourCoffeeData}
-            />
+            <>
+                <CoffeeHouse
+                    headerData={this.state.data.headerData}
+                    bestSellersData={this.getBestSellers
+                    (this.state.data.productsData, this.state.data.bestSellersData)}
+                />
+                <OurCoffee
+                    productData={visibleData}
+                    headerData={this.state.data.headerData}
+                    aboutOutCoffee={this.state.data.ourCoffeeData}
+                    filters={this.state.data.filters}
+                    currentFilter={this.state.currentFilter}
+                    onUpdateFilter={this.onUpdateFilter}
+                    onUpdateSearch={this.onUpdateSearch}
+                />
+            </>
+
 
 
         );

@@ -6,6 +6,9 @@ import CardsList from "../../cardsList/cards-list";
 const OurBestEl = styled.section`
   background-image: url("${bg}");
   padding: 80px 0 110px 0;
+  h3 {
+    margin-bottom: 40px;
+  }
 `;
 
 const OurBest = (props) => {
