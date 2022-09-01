@@ -6,23 +6,43 @@ import Footer from "../footer/footer";
 import Header from "../header/header";
 import Promo from "./promo/promo";
 import bg from "./bg.jpg";
+import PageMaster from "../page-master/page-master";
 
-const CoffeeHouse = (props) => {
-    return (
-        <>
-            <Greeting bg={bg}>
-                <Header data={props.headerData}/>
-                <Promo/>
-            </Greeting>
-            <main>
-                <Wrapper>
-                    <About/>
-                </Wrapper>
-                <OurBest bestSellersData={props.bestSellersData}/>
-            </main>
-            <Footer headerData={props.headerData}/>
-        </>
-    );
+class CoffeeHouse extends PageMaster {
+    render(data) {
+        data = <>
+                    <Greeting bg={bg}>
+                        <Header data={this.props.headerData} onChangePage={this.props.onChangePage}/>
+                        <Promo/>
+                    </Greeting>
+                    <main>
+                        <Wrapper>
+                            <About/>
+                        </Wrapper>
+                        <OurBest bestSellersData={this.props.bestSellersData}/>
+                    </main>
+                    <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
+                </>
+        return super.render(data);
+    }
+
+    // render() {
+    //     return (
+    //         <>
+    //             <Greeting bg={bg}>
+    //                 <Header data={this.props.headerData} onChangePage={this.props.onChangePage}/>
+    //                 <Promo/>
+    //             </Greeting>
+    //             <main>
+    //                 <Wrapper>
+    //                     <About/>
+    //                 </Wrapper>
+    //                 <OurBest bestSellersData={this.props.bestSellersData}/>
+    //             </main>
+    //             <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
+    //         </>
+    //     );
+    // }
 }
 
 export default CoffeeHouse;

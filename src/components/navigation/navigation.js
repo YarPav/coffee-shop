@@ -30,7 +30,7 @@ const Navigation = (props) => {
                     index === 0
                         ?
                         <li key={index}>
-                            <NavButton>
+                            <NavButton onChangePage={props.onChangePage}>
                                 {
                                     props.isDark
                                     ? <img src={iconDark} alt="Icon"/>
@@ -41,7 +41,7 @@ const Navigation = (props) => {
                         </li>
                         :
                         <li key={index}>
-                            <NavButton>
+                            <NavButton onChangePage={props.onChangePage}>
                                 {item.title}
                             </NavButton>
                         </li>

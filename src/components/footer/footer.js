@@ -13,7 +13,7 @@ const FooterEl = styled.footer`
 const Footer = (props) => {
     return (
         <FooterEl>
-            <Navigation data={props.headerData} isDark={true}/>
+            <Navigation data={props.headerData} isDark={true} onChangePage={props.onChangePage}/>
             <img className="dividing-line" src={dividingLine} alt="Dividing line"/>
         </FooterEl>
     );

@@ -41,11 +41,33 @@ class App extends Component {
                         id: 3,
                         title: "AROMISTICO Coffee 1 kg",
                         img: "img/third-item.jpg",
-                        price: 6.99,
+                        price: 7,
+                        country: "columbia"
+                    },
+                    {
+                        id: 4,
+                        title: "AROMISTICO Coffee 2 kg",
+                        img: "img/third-item.jpg",
+                        price: 14,
+                        country: "columbia"
+                    },
+                    {
+                        id: 5,
+                        title: "AROMISTICO Coffee 3 kg",
+                        img: "img/third-item.jpg",
+                        price: 21,
+                        country: "columbia"
+                    },
+                    {
+                        id: 6,
+                        title: "AROMISTICO Coffee 4 kg",
+                        img: "img/third-item.jpg",
+                        price: 28,
                         country: "columbia"
                     }
                 ],
                 bestSellersData: [1, 2, 3],
+                forYourPleasureProductsData: [1, 2, 3, 4, 5, 6],
                 ourCoffeeData: {
                     img: {
                         img: "img/picture.jpg",
@@ -57,6 +79,17 @@ class App extends Component {
                         "As greatly removed calling pleased improve an.\n" +
                         " Last ask him cold feel met spot shy want. Children me laughing we prospect answered followed. At it went" +
                         "is song that held help face."
+                },
+                forYourPleasureData: {
+                    img: {
+                        img: "img/picture1.jpg",
+                        desc: "The cup of coffee"
+                    },
+                    heading: "About our goods",
+                    desc: `Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
+                            Afraid at highly months do things on at. Situation recommend objection do intention so questions. 
+                            As greatly removed calling pleased improve an. Last ask him cold feel met spot shy want. 
+                            Children me laughing we prospect answered followed. At it went is song that held help face.`
                 },
                 filters: [
                     {
@@ -82,11 +115,12 @@ class App extends Component {
                 ]
             },
             searchString: '',
-            currentFilter: 'all'
+            currentFilter: 'all',
+            currentPage: 'Coffee house'
         }
     }
-    getBestSellers = (data, bestSellersData) => {
-        return data.filter((item, index) => item.id = bestSellersData[index]);
+    getItemsByCategory = (data, categoryData) => {
+        return data.filter((item, index) => item.id = categoryData[index]);
     }
 
     searchEmp = (items, searchString) => {
@@ -105,19 +139,29 @@ class App extends Component {
     onUpdateFilter = (currentFilter) => {
         this.setState({currentFilter});
     }
+    onChangePage = (currentPage) => {
+        this.setState({currentPage: currentPage});
+    }
 
     render() {
         const {data, currentFilter, searchString} = this.state;
         const filteredData = this.filterEmp(data.productsData, currentFilter),
             visibleData = this.searchEmp(filteredData, searchString);
         return (
-            <>
+            <div>
                 <CoffeeHouse
+                    componentName="Coffee house"
+                    currentPage={this.state.currentPage}
                     headerData={this.state.data.headerData}
-                    bestSellersData={this.getBestSellers
-                    (this.state.data.productsData, this.state.data.bestSellersData)}
+                    bestSellersData={
+                        this.getItemsByCategory
+                        (this.state.data.productsData, this.state.data.bestSellersData)
+                    }
+                    onChangePage={this.onChangePage}
                 />
                 <OurCoffee
+                    componentName="Our coffee"
+                    currentPage={this.state.currentPage}
                     productData={visibleData}
                     headerData={this.state.data.headerData}
                     aboutOutCoffee={this.state.data.ourCoffeeData}
@@ -125,11 +169,20 @@ class App extends Component {
                     currentFilter={this.state.currentFilter}
                     onUpdateFilter={this.onUpdateFilter}
                     onUpdateSearch={this.onUpdateSearch}
+                    onChangePage={this.onChangePage}
                 />
-            </>
-
-
-
+                <ForYourPleasure
+                    componentName="For your pleasure"
+                    currentPage={this.state.currentPage}
+                    productData={
+                        this.getItemsByCategory
+                        (this.state.data.productsData, this.state.data.forYourPleasureProductsData)
+                    }
+                    headerData={this.state.data.headerData}
+                    forYourPleasure={this.state.data.forYourPleasureData}
+                    onChangePage={this.onChangePage}
+                />
+            </div>
         );
     }
 
