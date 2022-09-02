@@ -11,11 +11,11 @@ const Button = styled.button`
 
 class NavButton extends Component {
     onChangePage = (e) => {
-        this.props.onChangePage(e.target.textContent);
+        this.props.onChangePage(e.target.value);
     }
     render() {
         return (
-            <Button onClick={this.onChangePage}>
+            <Button onClick={this.onChangePage} value={this.props.pageName}>
                 {this.props.children}
             </Button>
         );

@@ -15,7 +15,7 @@ const OurBest = (props) => {
     return (
         <OurBestEl>
             <Heading isImg={false} heading="Our best"/>
-            <CardsList data={props.bestSellersData}/>
+            <CardsList data={props.bestSellersData} onOpenProduct={props.onOpenProduct}/>
         </OurBestEl>
     );
 }

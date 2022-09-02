@@ -12,6 +12,7 @@ const PromoEl = styled.div`
   max-width: 670px;
   text-align: center;
   align-self: center;
+  padding: 0 5px;
   h1 {
     padding: 0;
   }
@@ -44,7 +45,7 @@ const PromoNavButton = styled(NavButton)`
   color: inherit;
   font-weight: inherit;
 `;
-const Promo = () => {
+const Promo = (props) => {
     return (
         <PromoEl>
             <h1>Everything You Love About Coffee</h1>
@@ -53,7 +54,7 @@ const Promo = () => {
                 We makes every day full of energy and taste<br/>
                 Want to try our beans?
             </h2>
-            <PromoNavButton>More</PromoNavButton>
+            <PromoNavButton onChangePage={props.onChangePage} pageName="Our coffee">More</PromoNavButton>
         </PromoEl>
     );
 }

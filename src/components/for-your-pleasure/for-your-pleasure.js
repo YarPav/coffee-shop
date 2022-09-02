@@ -18,27 +18,12 @@ class ForYourPleasure extends PageMaster {
             <PageContainer>
                 <PictureText data={this.props.forYourPleasure}/>
                 <Divide/>
-                <CardsList isDetailed={true} data={this.props.productData}/>
-                <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
+                <CardsList isDetailed={true} data={this.props.productData} onOpenProduct={this.props.onOpenProduct}/>
             </PageContainer>
+            <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
         </>
         return super.render(data);
     }
-
-    // return (
-    //     <>
-    //         <Greeting bg={bg} headerData={props.headerData}>
-    //             <Header data={props.headerData} onChangePage={props.onChangePage}/>
-    //             <h1>For your pleasure</h1>
-    //         </Greeting>
-    //         <PageContainer>
-    //             <PictureText data={props.forYourPleasure}/>
-    //             <Divide/>
-    //             <CardsList isDetailed={true} data={props.productData}/>
-    //             <Footer headerData={props.headerData} onChangePage={props.onChangePage}/>
-    //         </PageContainer>
-    //     </>
-    // );
 }
 
 export default ForYourPleasure;

@@ -4,6 +4,9 @@ import Filter from "./filter/filter";
 
 const SearchPanelEl = styled.section`
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 25px;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 60px;
 `;

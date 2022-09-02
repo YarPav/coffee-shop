@@ -8,7 +8,7 @@ const NavigationEl = styled.nav`
   max-width: 355px;
   width: 100%;
   font-size: 12px;
-  padding-top: 30px;
+  padding: 30px 5px 0 5px;
   color: ${props => props.isDark ? "#000" : "#fff"};
   ul {
     display: flex;
@@ -30,7 +30,7 @@ const Navigation = (props) => {
                     index === 0
                         ?
                         <li key={index}>
-                            <NavButton onChangePage={props.onChangePage}>
+                            <NavButton onChangePage={props.onChangePage} pageName={item.title}>
                                 {
                                     props.isDark
                                     ? <img src={iconDark} alt="Icon"/>
@@ -41,7 +41,7 @@ const Navigation = (props) => {
                         </li>
                         :
                         <li key={index}>
-                            <NavButton onChangePage={props.onChangePage}>
+                            <NavButton onChangePage={props.onChangePage} pageName={item.title}>
                                 {item.title}
                             </NavButton>
                         </li>

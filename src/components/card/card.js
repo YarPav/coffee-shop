@@ -23,9 +23,9 @@ const CardEl = styled.article`
 `;
 
 const Card = (props) => {
-    const {title, img, price, country} = props.data;
+    const {id, title, img, price, country} = props.data;
     return(
-        <CardEl isShadowed={props.isDetailed}>
+        <CardEl isShadowed={props.isDetailed} onClick={() => props.onOpenProduct(id)}>
             <img src={img} alt={title}/>
             <h4>{title}</h4>
             {props.isDetailed ? <p className="country">{country}</p> : null}

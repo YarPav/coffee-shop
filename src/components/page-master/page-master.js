@@ -6,7 +6,6 @@ class PageMaster extends Component {
     }
     render(data) {
         if (this.props.currentPage !== this.props.componentName) {
-            console.log(this.props.currentPage, this.props.componentName);
             return null;
         }
         return data;

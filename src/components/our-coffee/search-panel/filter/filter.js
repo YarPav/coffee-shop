@@ -5,8 +5,11 @@ const FilterEl = styled.section`
   color: #000;
   display: flex;
   align-items: center;
+  column-gap: 25px;
   .button-wrapper {
-    margin-left: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
   }
   button {
     font-size: 12px;
@@ -15,6 +18,7 @@ const FilterEl = styled.section`
     padding: 7px 0;
     text-align: center;
     margin-right: 5px;
+
   }
   button:last-child {
     margin-right: 0;

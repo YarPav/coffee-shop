@@ -14,7 +14,7 @@ const CardsList = (props) => {
     return (
         <CardsListEl>
             {props.data.map(item =>
-                <Card key={item.id} data={item} isDetailed={props.isDetailed}/>
+                <Card key={item.id} data={item} isDetailed={props.isDetailed} onOpenProduct={props.onOpenProduct}/>
             )}
         </CardsListEl>
     );

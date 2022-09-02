@@ -26,33 +26,12 @@ class OurCoffee extends PageMaster {
                     onUpdateFilter={this.props.onUpdateFilter}
                     onUpdateSearch={this.props.onUpdateSearch}
                 />
-                <CardsList isDetailed={true} data={this.props.productData}/>
-                <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
+                <CardsList isDetailed={true} data={this.props.productData} onOpenProduct={this.props.onOpenProduct}/>
             </PageContainer>
+            <Footer headerData={this.props.headerData} onChangePage={this.props.onChangePage}/>
         </>
         return super.render(data);
     }
-
-    // return (
-    //     <>
-    //         <Greeting bg={bg} headerData={props.headerData}>
-    //             <Header data={props.headerData} onChangePage={props.onChangePage}/>
-    //             <h1>Our coffee</h1>
-    //         </Greeting>
-    //         <PageContainer>
-    //             <PictureText data={props.aboutOutCoffee}/>
-    //             <Divide/>
-    //             <SearchPanel
-    //                 filters={props.filters}
-    //                 currentFilter={props.currentFilter}
-    //                 onUpdateFilter={props.onUpdateFilter}
-    //                 onUpdateSearch={props.onUpdateSearch}
-    //             />
-    //             <CardsList isDetailed={true} data={props.productData}/>
-    //             <Footer headerData={props.headerData} onChangePage={props.onChangePage}/>
-    //         </PageContainer>
-    //     </>
-    // );
 }
 
 export default OurCoffee;

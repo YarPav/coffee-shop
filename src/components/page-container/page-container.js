@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const PageContainerEl = styled.main`
-  max-width: 802px;
+  max-width: 865px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 70px;
+  padding: 70px 5px 0 5px;
 `;
 
 const PageContainer = (props) => {

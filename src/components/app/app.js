@@ -2,6 +2,7 @@ import {Component} from "react";
 import CoffeeHouse from "../coffee-house/coffee-house";
 import ForYourPleasure from "../for-your-pleasure/for-your-pleasure";
 import OurCoffee from "../our-coffee/our-coffee";
+import ProductPage from "../product-page/product-page";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -28,42 +29,48 @@ class App extends Component {
                         title: "Solimo Coffee Beans 2 kg",
                         img: "img/first-item.jpg",
                         price: 10.73,
-                        country: "brazil"
+                        country: "brazil",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     },
                     {
                         id: 2,
                         title: "Presto Coffee Beans 1 kg",
                         img: "img/second-item.jpg",
                         price: 15.99,
-                        country: "kenya"
+                        country: "kenya",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     },
                     {
                         id: 3,
                         title: "AROMISTICO Coffee 1 kg",
                         img: "img/third-item.jpg",
                         price: 7,
-                        country: "columbia"
+                        country: "columbia",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     },
                     {
                         id: 4,
                         title: "AROMISTICO Coffee 2 kg",
                         img: "img/third-item.jpg",
                         price: 14,
-                        country: "columbia"
+                        country: "columbia",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     },
                     {
                         id: 5,
                         title: "AROMISTICO Coffee 3 kg",
                         img: "img/third-item.jpg",
                         price: 21,
-                        country: "columbia"
+                        country: "columbia",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     },
                     {
                         id: 6,
                         title: "AROMISTICO Coffee 4 kg",
                         img: "img/third-item.jpg",
                         price: 28,
-                        country: "columbia"
+                        country: "columbia",
+                        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                     }
                 ],
                 bestSellersData: [1, 2, 3],
@@ -116,7 +123,8 @@ class App extends Component {
             },
             searchString: '',
             currentFilter: 'all',
-            currentPage: 'Coffee house'
+            currentPage: 'Coffee house',
+            currentProductId: null
         }
     }
     getItemsByCategory = (data, categoryData) => {
@@ -142,6 +150,13 @@ class App extends Component {
     onChangePage = (currentPage) => {
         this.setState({currentPage: currentPage});
     }
+    onOpenProduct = (id) => {
+        this.setState({
+            currentPage: 'Product',
+            currentProductId: id
+        });
+        console.log(this.state.data.productsData.find(item => item.id === id));
+    }
 
     render() {
         const {data, currentFilter, searchString} = this.state;
@@ -158,6 +173,7 @@ class App extends Component {
                         (this.state.data.productsData, this.state.data.bestSellersData)
                     }
                     onChangePage={this.onChangePage}
+                    onOpenProduct={this.onOpenProduct}
                 />
                 <OurCoffee
                     componentName="Our coffee"
@@ -170,6 +186,7 @@ class App extends Component {
                     onUpdateFilter={this.onUpdateFilter}
                     onUpdateSearch={this.onUpdateSearch}
                     onChangePage={this.onChangePage}
+                    onOpenProduct={this.onOpenProduct}
                 />
                 <ForYourPleasure
                     componentName="For your pleasure"
@@ -180,6 +197,14 @@ class App extends Component {
                     }
                     headerData={this.state.data.headerData}
                     forYourPleasure={this.state.data.forYourPleasureData}
+                    onChangePage={this.onChangePage}
+                    onOpenProduct={this.onOpenProduct}
+                />
+                <ProductPage
+                    componentName="Product"
+                    currentPage={this.state.currentPage}
+                    productData={this.state.data.productsData.find(item => item.id === this.state.currentProductId)}
+                    headerData={this.state.data.headerData}
                     onChangePage={this.onChangePage}
                 />
             </div>

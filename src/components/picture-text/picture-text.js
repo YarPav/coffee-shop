@@ -6,8 +6,21 @@ const PictureTextEl = styled.section`
   display: flex;
   color: #000;
   column-gap: 80px;
-  padding-left: 72px;
+  row-gap: 55px;
+  //padding-left: 72px;
+  flex-wrap: wrap;
+  justify-content: center;
+  .block-img {
+    max-width: 277px;
+    min-width: 310px;
+    width: 100%;
+    img {
+      width: 100%;
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+    }
+  }
   .text {
+    max-width: 346px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +40,7 @@ const PictureText = (props) => {
     const {img, heading, desc} = props.data;
     return (
         <PictureTextEl>
-            <div>
+            <div className="block-img">
                 <img src={img.img} alt={img.desc}/>
             </div>
             <div className="text">

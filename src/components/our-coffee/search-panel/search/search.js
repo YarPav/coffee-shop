@@ -3,13 +3,15 @@ import {Component} from "react";
 
 const SearchEl = styled.label`
   color: #000;
+  display: flex;
+  row-gap: 5px;
+  column-gap: 25px;
   input {
     font-size: 12px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
     color: #000;
     padding: 6px 36px;
     border-radius: 4px;
-    margin-left: 19px;
     &::placeholder {
       color: #00000080;
     }
@@ -33,7 +35,7 @@ class Search extends Component {
     render() {
         return (
             <SearchEl>
-                Looking for
+                <p>Looking for</p>
                 <input type="text"
                        className="form-control search-input"
                        placeholder="Start typing here..."
